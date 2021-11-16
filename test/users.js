@@ -61,15 +61,25 @@ describe('Get User Validation', () => {
     it('GET /Users with query params', ()=> {
         return request.get(`/users?access-token=${token}&page=5&gender=female&status=inactive`).then((res)=> {
             // https://gorest.co.in/public/v1/users?access-token=b471a4c442b596ac5ba189f97f4dd2c08b599af7d7bda21a527c36e6f99b48cb&page=5&gender=female&status=inactive
-            // console.log('********',res.body.data);
+            console.log('********',res.body.data);
             res.body.data.forEach((data)=> {
                 expect(data.gender).to.eq('female');
                 expect(data.status).to.eq('inactive');
             })
             // expect(res.body.data).to.not.be.empty;
         })
-    })
-});   
+
+        // return request
+        //                 .get(`/users`)
+        //                 .set('Authorization', `Bearer ${token}`)
+        //                 .set('gender', 'female')
+        //                 .set('status','inactive')
+        //                 .then((err, res)=> {
+        //                     console.log('Response is ',res)
+        // })
+    })   
+
+});
 
 
 describe('Updating New User data', () => {
